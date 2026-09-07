@@ -2,7 +2,7 @@
 
 Bulk-analyze GitHub profiles and their public repositories from a username list, then export a sortable CSV and Excel report.
 
-> **Important:** The score in this project is a transparent heuristic for exploration. It is **not** a measure of developer quality, employability, or hiring suitability.
+> **Important:** The score is a transparent heuristic for exploration. It is **not** a measure of developer quality, employability, or hiring suitability.
 
 ## Why this exists
 
@@ -19,7 +19,7 @@ Checking hundreds of GitHub profiles manually is slow. This tool turns a list of
 - Export both CSV and XLSX
 - Retry common rate-limit responses
 - Parallelize requests with a configurable worker count
-- Keep tokens out of source control with `.env` / environment variables
+- Keep tokens out of source control with environment variables
 
 ## Project structure
 
@@ -31,7 +31,6 @@ github-profile-analyzer/
 ├── requirements.txt
 ├── .env.example
 ├── data/
-│   ├── usernames.txt
 │   └── usernames.example.txt
 ├── src/
 │   ├── __init__.py
@@ -112,7 +111,7 @@ A Markdown table is also accepted:
 | torvalds |
 ```
 
-The included `data/usernames.txt` is the cleaned username list used as the initial batch for this repository. `data/usernames.example.txt` is a tiny safe example for testing.
+`data/usernames.example.txt` contains a tiny safe test list. For your real batch, save your cleaned usernames as `data/usernames.txt` locally. The parser also accepts your original Markdown table directly.
 
 ## Run
 
@@ -172,7 +171,7 @@ The score is intentionally simple and inspectable:
 - Small bonuses for a public bio, company, and blog
 - Final score is capped at 100
 
-This prevents a single popular repository or a huge follower count from dominating the result. The score should only be used as a convenience for sorting profiles for manual review.
+This prevents a single popular repository or a huge follower count from dominating the result. Use it only as a convenience for sorting profiles for manual review.
 
 ## API rate limits
 
